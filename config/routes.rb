@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      get 'departments/index'
+      get 'departments/show'
+      get 'departments/create'
+      get 'departments/update'
+      get 'departments/destroy'
       resources :categories, only: [:index, :show, :create, :update, :destroy]
     end
   end
