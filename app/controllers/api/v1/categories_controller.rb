@@ -5,7 +5,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def show
-    category = category.find_by(id: params[:id])
+    category = Category.find_by(id: params[:id])
     if category
       render json: category, status: 200
     else
@@ -19,7 +19,7 @@ class Api::V1::CategoriesController < ApplicationController
     category = Category.new(
       name: category_params[:name]
     )
-    if category.save
+    if Category.save
       render json: category, status: 200
     else
       render json: {
@@ -29,7 +29,7 @@ class Api::V1::CategoriesController < ApplicationController
   end
 
   def update
-    category = Category.find_by(id: params[id])
+    category = Category.find_by(id: params[:id])
     if category
       category.update(name: params[:name])
        render json: "Category updated successfully"
@@ -50,9 +50,7 @@ class Api::V1::CategoriesController < ApplicationController
 
   private
   def category_params
-    params.require(:category).permit([
-      :name
-    ])
+    params.require(:category).permit([:name])
   end
   
 end
