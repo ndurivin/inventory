@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
+      resources :assets, only: [:index, :show, :create, :update, :destroy]
       resources :departments, only: [:index, :show, :create, :update, :destroy]
       resources :categories, only: [:index, :show, :create, :update, :destroy]
     end

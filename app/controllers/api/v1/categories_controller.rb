@@ -20,7 +20,7 @@ class Api::V1::CategoriesController < ApplicationController
     category = Category.new(
       name: category_params[:name]
     )
-    if Category.save
+    if category.save
       render json: category, status: 200
     else
       render json: {

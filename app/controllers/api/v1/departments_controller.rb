@@ -16,15 +16,16 @@ class Api::V1::DepartmentsController < ApplicationController
     end
   end
 
+  
   def create
     department = Department.new(
       name: department_params[:name]
     )
-    if Department.save
+    if department.save
       render json: department, status: 200
     else
       render json: {
-        error: 'Error creating Department...'
+        error: 'Error creating department...'
       }
     end
   end
